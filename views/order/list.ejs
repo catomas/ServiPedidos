@@ -12,8 +12,9 @@
                         <h1>
                             <div class="card-header"> Lista de Ordenes</div>
                         </h1>
-                        <table class="table table-hover">
-                            
+                        <div class="table-responsive">
+
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -39,16 +40,17 @@
                                             <% } %>
                                 </tbody>
                             </table>
+                        </div>
                             <a class="btn btn-secondary" href="/order/convert"> Descargar Archivo en Excel </a>
                         
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <%- include("../layouts/scripts"); -%>
-    </body>
-</html>
+            <%- include("../layouts/scripts"); -%>
+        </body>
+        </html>
         
-    
+        
         
         
