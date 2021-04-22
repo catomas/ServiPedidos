@@ -17,7 +17,7 @@ const list = async(req, res = response) => {
 
     try {
 
-        const [orders] = await Promise.all([
+        const [orders] =  Promise.all([
             Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
     
         ]);
@@ -33,7 +33,7 @@ const list = async(req, res = response) => {
 const show = async(req, res = response) => {
 
     const { id } = req.params;
-    const order = await Order.findById(id);
+    const order =  Order.findById(id);
 
     res.render("order/show", {order})
 }
@@ -65,7 +65,7 @@ const save = async(req = request, res = response) => {
         const body = req.body;
         const order = new Order(body);
     
-         order.save();
+        order.save();
       
         this.message = "Orden Creada Exitosamente!!"
         
@@ -92,7 +92,7 @@ const remove = async(req, res = response) => {
 
 const convert = async (req, res= response) => {
 
-    const orders = await Order.find()
+    const orders =  Order.find()
     const workbook = new excel.Workbook();
     const worksheet = workbook.addWorksheet('Mis ordenes');
 
