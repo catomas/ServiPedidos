@@ -7,7 +7,7 @@ body {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
-    .container, .card {
+    .container, .card, .table{
         width: auto !important;
         overflow-x: hidden !important;
         }
@@ -15,7 +15,7 @@ body {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-    .container, .card {
+    .container, .card, .table{
         width: auto !important;
         overflow-x: hidden !important;
         }
