@@ -1,5 +1,5 @@
 const { response, request, json } = require('express');
-const Order = require('../models/Order');
+const Order = require('../models/order');
 const excel = require('exceljs');
 const fs = require('fs');
 
