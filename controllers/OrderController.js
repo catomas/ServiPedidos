@@ -15,15 +15,18 @@ const home = (req, res = response) => {
 
 const list = async(req, res = response) => {
 
-
-    const [orders] = await Promise.all([
-        Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
-
-    ]);
+    try {
+        
+        const [orders] = await Promise.all([
+            Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
     
-
-
-    res.render("order/list", {orders});
+        ]);
+    
+        res.render("order/list", {orders});
+        
+    } catch (error) {
+        console.log(error);
+    }
 
 };
 

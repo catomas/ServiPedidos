@@ -46,14 +46,7 @@ class Server {
 
         // Parseo body
         this.app.use(express.urlencoded({extended:true}));
-
-        // Json
-        
-
-        
-        
-
-    
+       
     }
 
     models() {
