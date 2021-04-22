@@ -56,7 +56,9 @@ class Server {
     
     }
 
-
+    models() {
+        this.app.use(require('./models/server'));
+    }
 
     routes() {
         this.app.use(require('../routes/orders'));
