@@ -16,7 +16,7 @@ const home = (req, res = response) => {
 const list = async(req, res = response) => {
 
     try {
-        
+
         const [orders] = await Promise.all([
             Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
     
@@ -65,7 +65,7 @@ const save = async(req = request, res = response) => {
         const body = req.body;
         const order = new Order(body);
     
-        await order.save();
+         order.save();
       
         this.message = "Orden Creada Exitosamente!!"
         
