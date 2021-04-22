@@ -1,0 +1,35 @@
+body {
+    background-color:#95F0D3;
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    html, body {
+        width: auto !important;
+        overflow-x: hidden !important;
+        }
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    html, body {
+        width: auto !important;
+        overflow-x: hidden !important;
+        }
+ }
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) { 
+   
+ }
+
+/* X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+ 
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+   
+}

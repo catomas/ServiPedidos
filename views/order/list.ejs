@@ -3,19 +3,17 @@
     <head>
         <%- include("../layouts/head"); -%>
     </head>
-    <body style="background-color:#95F0D3;">
+    <body >
         <%- include("../layouts/navbar"); -%>
-        <div class="overflow-auto">
-
-            <div class="container mb-5">
-                <div class="row justify-content-center  text-center">
-                    <div class="col-md-8">
-                        <div class="card ">
-                            <h1>
-                                <div class="card-header"> Lista de Ordenes</div>
-                            </h1>
+        <div class="container mb-5">
+            <div class="row justify-content-center  text-center">
+                <div class="col-md-8">
+                    <div class="card ">
+                        <h1>
+                            <div class="card-header"> Lista de Ordenes</div>
+                        </h1>
+                        <table class="table table-hover">
                             
-                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -42,7 +40,7 @@
                                 </tbody>
                             </table>
                             <a class="btn btn-secondary" href="/order/convert"> Descargar Archivo en Excel </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
