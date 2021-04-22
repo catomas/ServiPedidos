@@ -17,10 +17,9 @@ const list = async(req, res = response) => {
 
     try {
 
-        const [orders] =  Promise.all([
-            Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
+        const orders = await Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1});
     
-        ]);
+        
     
         res.render("order/list", {orders});
         
@@ -32,10 +31,17 @@ const list = async(req, res = response) => {
 
 const show = async(req, res = response) => {
 
-    const { id } = req.params;
-    const order =  Order.findById(id);
+    try {
 
-    res.render("order/show", {order})
+        const { id } = req.params;
+        const order = await Order.findById(id);
+        res.render("order/show", {order})
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+    
 }
 
 const update = async(req, res = response) => {
@@ -65,7 +71,7 @@ const save = async(req = request, res = response) => {
         const body = req.body;
         const order = new Order(body);
     
-        order.save();
+        await order.save();
       
         this.message = "Orden Creada Exitosamente!!"
         
@@ -85,14 +91,12 @@ const remove = async(req, res = response) => {
         const {id} = req.params; 
         const order = await Order.findByIdAndDelete( id );
     
-   
-
-    res.redirect("/order/list")
+        res.redirect("/order/list")
 };
 
 const convert = async (req, res= response) => {
 
-    const orders =  Order.find()
+    const orders = await Order.find()
     const workbook = new excel.Workbook();
     const worksheet = workbook.addWorksheet('Mis ordenes');
 
