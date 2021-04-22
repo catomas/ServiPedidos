@@ -16,10 +16,10 @@ const home = (req, res = response) => {
 const list = async(req, res = response) => {
 
     try {
-
-        const orders = await Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1});
+        const [orders] = await Promise.all([
+            Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
     
-        
+        ]);
     
         res.render("order/list", {orders});
         
@@ -32,7 +32,6 @@ const list = async(req, res = response) => {
 const show = async(req, res = response) => {
 
     try {
-
         const { id } = req.params;
         const order = await Order.findById(id);
         res.render("order/show", {order})
@@ -40,8 +39,6 @@ const show = async(req, res = response) => {
     } catch (error) {
         console.log(error);
     }
-
-    
 }
 
 const update = async(req, res = response) => {
@@ -90,7 +87,6 @@ const remove = async(req, res = response) => {
     
         const {id} = req.params; 
         const order = await Order.findByIdAndDelete( id );
-    
         res.redirect("/order/list")
 };
 

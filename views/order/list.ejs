@@ -5,27 +5,29 @@
     </head>
     <body style="background-color:#95F0D3;">
         <%- include("../layouts/navbar"); -%>
-        <div class="container mb-5">
-            <div class="row justify-content-center  text-center">
-                <div class="col-md-8">
-                    <div class="card ">
-                        <h1>
-                            <div class="card-header"> Lista de Ordenes</div>
-                        </h1>
-                        
-                        <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre del Cliente</th>
-                                <th scope="col">Productos</th>
-                                <th scope="col">Precio Total</th>
-                                <th scope="col">Fecha</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <% if (orders.length > 0) { %>
-                                    <% i = 1 %>
+        <div class="overflow-auto">
+
+            <div class="container mb-5">
+                <div class="row justify-content-center  text-center">
+                    <div class="col-md-8">
+                        <div class="card ">
+                            <h1>
+                                <div class="card-header"> Lista de Ordenes</div>
+                            </h1>
+                            
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre del Cliente</th>
+                                        <th scope="col">Productos</th>
+                                        <th scope="col">Precio Total</th>
+                                        <th scope="col">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (orders.length > 0) { %>
+                                        <% i = 1 %>
                                         <% orders.forEach( order => { %>
                                             <tr>
                                                 <th scope="row"> <a href="/order/show/<%=order.id %>" class="btn btn-secondary"> <%= i  %>  </a> </th>
@@ -35,19 +37,20 @@
                                                 <td><%= order.fecha %></td>
                                             </tr>
                                             <% i = i + 1 %>
-                                        <% }) %>
-                                <% } %>
-                            </tbody>
-                        </table>
-                        <a class="btn btn-secondary" href="/order/convert"> Descargar Archivo en Excel </a>
+                                            <% }) %>
+                                            <% } %>
+                                </tbody>
+                            </table>
+                            <a class="btn btn-secondary" href="/order/convert"> Descargar Archivo en Excel </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
+        <%- include("../layouts/scripts"); -%>
+    </body>
+</html>
+        
     
         
-        <%- include("../layouts/scripts"); -%>
-  </body>
-</html>
+        
