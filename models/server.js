@@ -1,14 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { dbConnection } = require('../database/config')
+
+
+
 
 
 class Server {
 
-    constructor(){
+    constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.ordersPath = '/orders';
+        this.viewsPath = path.join(__dirname, '../views')
+
 
         // COnectar a base de datos
         this.conectarDB();
@@ -18,6 +23,9 @@ class Server {
 
         // Rutas de mi aplicación
         this.routes();
+
+        // Motor de plantilla
+        this.views();
     }
 
     async conectarDB() {
@@ -28,21 +36,39 @@ class Server {
     middlewares() {
 
         // CORS
-        this.app.use( cors() );
+        this.app.use(cors());
 
         // Parseo y lectura del body
-        this.app.use( express.json() );
+        this.app.use(express.json());
 
         // Directotio Público
-        this.app.use( express.static('public') );
+        this.app.use(express.static('public'));
+
+        // Parseo body
+        this.app.use(express.urlencoded({extended:true}));
+
+        // Json
+        
+
+        
+        
+
+    
     }
+
+
 
     routes() {
-        this.app.use(this.ordersPath, require('../routes/orders'));
+        this.app.use(require('../routes/orders'));
     }
 
-    listen(){
-        this.app.listen( this.port, () => {
+    views() {
+        this.app.set("view engine", "ejs");
+        this.app.set("views", this.viewsPath);
+    }
+
+    listen() {
+        this.app.listen(this.port, () => {
             console.log('Servidor corriendo en el puerto', this.port);
         });
     }

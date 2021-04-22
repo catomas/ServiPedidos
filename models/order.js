@@ -1,5 +1,4 @@
  
-
 const {Schema, model } = require('mongoose');
 
 const OrderSchema = Schema({
@@ -17,7 +16,7 @@ const OrderSchema = Schema({
     },
     fecha: {
         type: Date,
-        required: [true, 'la fecha es obligatoria'],
+        default: Date.now,
     },
     producto: {
         type: String,
@@ -34,6 +33,9 @@ const OrderSchema = Schema({
     pago: {
         type: Boolean,
         required: [true, 'El pago es obligatorio'],
+    },
+    offset: {
+        type: String
     }
 
 
