@@ -4,6 +4,7 @@ const excel = require('exceljs');
 const fs = require('fs');
 
 
+
 this.message = "";
 
 
@@ -17,11 +18,14 @@ const list = async(req, res = response) => {
 
     try {
         const [orders] = await Promise.all([
-            Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1})
-    
+            Order.find().select({fecha: 1, precio: 1, nombreCliente: 1, precio: 1, producto: 1}),
         ]);
+
+        const mensaje = this.message
+        this.message = ""
+        
     
-        res.render("order/list", {orders});
+        res.render("order/list", {orders, mensaje});
         
     } catch (error) {
         console.log(error);
@@ -31,6 +35,7 @@ const list = async(req, res = response) => {
 
 const show = async(req, res = response) => {
 
+    
     try {
         const { id } = req.params;
         const order = await Order.findById(id);
@@ -55,7 +60,7 @@ const update = async(req, res = response) => {
 
 const create = (req, res = response) => {
 
-        mensaje = this.message
+        const mensaje = this.message
         this.message = ""
         res.render("order/create",{mensaje});
        
@@ -85,9 +90,20 @@ const save = async(req = request, res = response) => {
 
 const remove = async(req, res = response) => {
     
+    try {
+        
         const {id} = req.params; 
         const order = await Order.findByIdAndDelete( id );
+
+        this.message = "Orden Eliminada Exitosamente!!"
+
         res.redirect("/order/list")
+
+    } catch (error) {
+        this.message = "Algo fallo, no se pudo guardar la Orden"
+        console.log(error);
+        
+    }
 };
 
 const convert = async (req, res= response) => {

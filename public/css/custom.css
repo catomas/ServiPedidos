@@ -1,37 +1,26 @@
 body {
-    background-color:#95F0D3;
+    background-color: #95F0D3;  
+}
+
+#247058
+#95F0D3
+#75BDA6
+.my-custom-scrollbar {
+    position: relative;
+    height: 560px;
+    overflow: auto;   
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.titulo {
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation: bounceInUp;
+    animation-duration: 2s;
 }
 
 
-
-
-/* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { 
-    .container, .card, .table{
-        width: auto !important;
-        overflow-x: hidden !important;
-        }
- }
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-    .container, .card, .table{
-        width: auto !important;
-        overflow-x: hidden !important;
-        }
- }
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) { 
-   
- }
-
-/* X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) { 
- 
-}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { 
-   
-}
+  

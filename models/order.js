@@ -1,6 +1,8 @@
  
 const {Schema, model } = require('mongoose');
 
+
+
 const OrderSchema = Schema({
     nombreVendedor: {
         type: String,
@@ -16,7 +18,7 @@ const OrderSchema = Schema({
     },
     fecha: {
         type: Date,
-        default: Date.now,
+        required: [true, 'la fecha es obligatorio']
     },
     producto: {
         type: String,
