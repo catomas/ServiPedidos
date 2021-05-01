@@ -64,7 +64,7 @@ const update = async(req, res = response) => {
         const {_id, fecha, ...all} = req.body;
     
         const order = await Order.findByIdAndUpdate(id, all);
-        res.render("order/show", {order})
+        res.redirect("/order/show/" + id)
         
     } catch (error) {
         console.log(error);
