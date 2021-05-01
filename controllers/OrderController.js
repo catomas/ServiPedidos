@@ -46,15 +46,29 @@ const show = async(req, res = response) => {
     }
 }
 
+const edit = async(req, res = response) => {
+    
+    try{
+        const { id } = req.params;
+        const order = await Order.findById(id);
+        res.render("order/update", {order})
+    } catch (error){
+        console.log(error);
+    }
+}
+
 const update = async(req, res = response) => {
 
-    const { id } = req.params;
-    const {_id, ...all} = req.body;
-
-    const order = await Order.findByIdAndUpdate(id, all);
-    res.json({
-        order
-    });
+    try {
+        const { id } = req.params;
+        const {_id, fecha, ...all} = req.body;
+    
+        const order = await Order.findByIdAndUpdate(id, all);
+        res.render("order/show", {order})
+        
+    } catch (error) {
+        console.log(error);
+    }
 
 };
 
@@ -91,7 +105,7 @@ const save = async(req = request, res = response) => {
 const remove = async(req, res = response) => {
     
     try {
-        
+         
         const {id} = req.params; 
         const order = await Order.findByIdAndDelete( id );
 
@@ -144,6 +158,7 @@ module.exports = {
     create,
     save,
     update,
+    edit,
     remove,
     show, 
     convert,

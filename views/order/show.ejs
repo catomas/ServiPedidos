@@ -1,39 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-      <%- include("../layouts/head"); -%>
-   
+    <%- include("../layouts/head"); -%>
   </head>
-<body>
-  <%- include("../layouts/navbar"); -%>
+  <body>
+    <%- include("../layouts/navbar"); -%>
     <div class="container mb-5">
-        <div class="row justify-content-center  text-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="h1">
-                        <div class="card-header"> <%= order.nombreCliente %></div>
-                    </div>
-                    <div class="card-body ">
-                        <b>Nombre del Cliente:</b> <%= order.nombreCliente %> <br/>
-                        <b>Nombre del Vendedor:</b> <%= order.nombreVendedor %> <br/>
-                        <b>Direccion:</b> <%= order.direccion %> <br/>
-                        <b>Productos:</b> <%= order.producto %> <br/>
-                        <b>Precio Total:</b> <%= order.precio %> <br/>
-                        <b>Metodo de pago:</b> <%= order.metodoPago %> <br/>
-                        <b>¿Pago?:</b> <%= order.pago %> <br/>
-                        <b>Fecha:</b> <%= order.fecha %> <br/>
-                    </div>  
-                    <div class="block mb-3">
-                        <a href="/order/delete/<%=order.id %>" type="button" class="btn btn-danger"> Eliminar </a>
-                    </div>
-                </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="h1">
+              <div class="card-header"><%= order.nombreCliente %></div>
             </div>
+            <div class="card-body">
+              <b>Nombre del Cliente:</b> <%= order.nombreCliente %> <br />
+              <b>Nombre del Vendedor:</b> <%= order.nombreVendedor %> <br />
+              <b>Dirección:</b> <%= order.direccion %> <br />
+              <b>Productos:</b> <%= order.producto %> <br />
+              <b>Precio Total:</b> <%= order.precio %> <br />
+              <b>Método de pago:</b> <%= order.metodoPago %> <br />
+              <% if (order.pago == true) { %>
+              <b>¿Pagó?:</b> Si <br />
+              <% } if (order.pago == false) { %>
+              <b>¿Pagó?:</b> No <br />
+              <% } %>
+              <b>Fecha:</b> <%= order.fecha %> <br />
+            </div>
+            <div class="block mb-3">
+              <a
+                href="/order/edit/<%=order.id %>"
+                type="button"
+                class="btn btn-secondary"
+              >
+                Actualizar
+              </a>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Eliminar
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Eliminar
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      ¿Esta seguro que quiere eliminar la orden?
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancelar
+                      </button>
+                      <a
+                        href="/order/delete/<%=order.id %>"
+                        type="button"
+                        class="btn btn-danger"
+                      >
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-<%- include("../layouts/scripts"); -%>
+  </body>
+  <%- include("../layouts/scripts"); -%>
 </html>
-                    
-        
-    
-    

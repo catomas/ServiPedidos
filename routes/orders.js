@@ -9,7 +9,8 @@ router.get('/order/create',  order.create);
 router.get('/order/list',  order.list);
 router.post('/order/save',  order.save);
 router.get('/order/show/:id',  order.show);
-router.put('/order/update/:id',  order.update);
+router.post('/order/update/:id',  order.update);
+router.get('/order/edit/:id', order.edit);
 router.get('/order/delete/:id', order.remove);
 router.get('/order/convert/', order.convert);
 
