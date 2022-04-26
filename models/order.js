@@ -14,7 +14,6 @@ const OrderSchema = Schema({
     },
     direccion: {
         type: String,
-        required: [true, 'la dirreccion es obligatoria'],
     },
     fecha: {
         type: Date,
